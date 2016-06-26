@@ -23,8 +23,15 @@
 }
 -(void)getDataWithRequestMode:(VMRequestMode)requestMode completionHandler:(void (^)(NSError *))completionHandler{
     _dataTask = [NetManager getCategoriesListComletionHandler:^(NSArray<Esarray *> *arrModel, NSError *error) {
-        self.dataList = arrModel;
-        !completionHandler?:completionHandler (error);
+        if (error) {
+            DDLogError(@"%@",error);
+        }else{
+            if (requestMode == VMRequestModeRefresh) {
+                self.dataList = nil;
+            }
+            self.dataList = arrModel;
+        }
+        !completionHandler?:completionHandler(error);
     }];
 }
 - (NSArray<Esarray *> *)dataList {

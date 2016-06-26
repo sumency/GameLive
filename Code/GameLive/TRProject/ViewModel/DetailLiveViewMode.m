@@ -23,7 +23,13 @@
     return [self modelForRow:row].thumb.yx_URL;
 }
 - (NSString *)viewForRow:(NSInteger)row{
-    return [self modelForRow:row].view;
+    NSInteger num = ([self modelForRow:row].view).integerValue;
+    if (num >= 10000) {
+        NSString *tmp = [NSString stringWithFormat:@"%.2f万",num/10000.0];
+        return tmp;
+    }else{
+        return [NSString stringWithFormat:@"%ld",num];
+    }
 }
 - (NSString *)titleForRow:(NSInteger)row{
     return [self modelForRow:row].title;
@@ -38,6 +44,7 @@
 -(NSInteger)numForRow{
     return self.dataList.count;
 }
+
 -(InData *)modelForRow:(NSInteger)row{
     return self.dataList[row];
 }
@@ -53,26 +60,40 @@
             break;
         }
     }
-    
-    _dataTask = [NetManager getCategoriesGameListGameName:self.gameName page:_page comletionHandler:^(LiveModel *model, NSError *error) {
-        if (error) {
-            DDLogError(@"%@",error);
-        }else{
-            _hasMore = model.data.count == 90;
-            if (requestMode == VMRequestModeRefresh) {
-                [self.dataList removeAllObjects];
+    if (self.gameName == nil) {
+        _dataTask = [NetManager getLivePage:_page completionHandler:^(LiveModel *model, NSError *error) {
+            if (error) {
+                DDLogError(@"%@",error);
+            }else{
+                _hasMore = model.data.count == 90;
+                if (requestMode == VMRequestModeRefresh) {
+                    [self.dataList removeAllObjects];
+                }
+                [self.dataList addObjectsFromArray:model.data];
             }
-            [self.dataList addObjectsFromArray:model.data];
-        }
-        !completionHandler ?: completionHandler(error);
-    }];
+            !completionHandler ?: completionHandler(error);
+        }];
+    }else{
+        _dataTask = [NetManager getCategoriesGameListGameName:self.gameName page:_page comletionHandler:^(LiveModel *model, NSError *error) {
+            if (error) {
+                DDLogError(@"%@",error);
+            }else{
+                _hasMore = model.data.count == 90;
+                if (requestMode == VMRequestModeRefresh) {
+                    [self.dataList removeAllObjects];
+                }
+                [self.dataList addObjectsFromArray:model.data];
+            }
+            !completionHandler ?: completionHandler(error);
+        }];
+    }
 }
 
 - (NSMutableArray<InData *> *)dataList {
-	if(_dataList == nil) {
-		_dataList = [[NSMutableArray<InData *> alloc] init];
-	}
-	return _dataList;
+    if(_dataList == nil) {
+        _dataList = [[NSMutableArray<InData *> alloc] init];
+    }
+    return _dataList;
 }
 
 @end

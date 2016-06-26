@@ -15,6 +15,8 @@
 #define kHomePagePath @"/json/page/app-index/info.json"
 
 #define kAdPath @"/json/page/ad-slot/info.json"
+
+#define kVedio @"http://hls.quanmin.tv/live/%@/playlist.m3u8"
 #endif /* RequestPaths_h */
 
 

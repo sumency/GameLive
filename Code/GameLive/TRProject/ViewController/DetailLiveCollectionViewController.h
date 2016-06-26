@@ -10,5 +10,5 @@
 
 @interface DetailLiveCollectionViewController : UICollectionViewController
 @property (nonatomic) NSString *gameName;
-- (instancetype)initWithGameName:(NSString *)gameName;
+@property (nonatomic) NSString *CNName;
 @end
