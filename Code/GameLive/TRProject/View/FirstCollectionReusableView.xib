@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A282b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="FirstCollectionReusableView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ws-pE-HMP">
+                    <rect key="frame" x="0.0" y="17" width="5" height="16"/>
+                    <color key="backgroundColor" red="0.98431372549999996" green="0.3803921569" blue="0.031372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="CfG-0G-B1c"/>
+                        <constraint firstAttribute="width" constant="5" id="r3q-58-GCl"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fol-Sq-aOc">
+                    <rect key="frame" x="13" y="14" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xrP-3r-6tH">
+                    <rect key="frame" x="290" y="15" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Ubs-8D-EoK"/>
+                        <constraint firstAttribute="width" constant="20" id="blz-eT-K9q"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSO-mh-YgZ">
+                    <rect key="frame" x="257" y="11" width="30" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="看看">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="xrP-3r-6tH" firstAttribute="leading" secondItem="OSO-mh-YgZ" secondAttribute="trailing" constant="3" id="3tp-i2-8s6"/>
+                <constraint firstAttribute="trailing" secondItem="xrP-3r-6tH" secondAttribute="trailing" constant="10" id="5ag-EC-RHs"/>
+                <constraint firstItem="OSO-mh-YgZ" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="EpF-US-2hb"/>
+                <constraint firstItem="xrP-3r-6tH" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="Fmr-6A-0S8"/>
+                <constraint firstItem="Fol-Sq-aOc" firstAttribute="leading" secondItem="4ws-pE-HMP" secondAttribute="trailing" constant="8" id="dEv-Ub-qMn"/>
+                <constraint firstItem="4ws-pE-HMP" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="fCl-QN-R5D"/>
+                <constraint firstItem="4ws-pE-HMP" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="oO2-jA-M90"/>
+                <constraint firstItem="Fol-Sq-aOc" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="qyz-u0-ygS"/>
+            </constraints>
+            <connections>
+                <outlet property="haveSee" destination="OSO-mh-YgZ" id="80N-4S-HdS"/>
+                <outlet property="image" destination="xrP-3r-6tH" id="3wG-CK-QUK"/>
+                <outlet property="title" destination="Fol-Sq-aOc" id="43g-YB-3D5"/>
+            </connections>
+            <point key="canvasLocation" x="345" y="356"/>
+        </collectionReusableView>
+    </objects>
+</document>

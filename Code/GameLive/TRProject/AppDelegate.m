@@ -41,7 +41,7 @@
     UINavigationController *naviZhiBo = [[UINavigationController alloc]initWithRootViewController:dvc];
 /***********************************************************/
     UICollectionViewFlowLayout *layoutHomePage = [UICollectionViewFlowLayout new];
-    layoutHomePage.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    layoutHomePage.scrollDirection = UICollectionViewScrollDirectionVertical;
     HomePageCollectionViewController *homePageC = [[HomePageCollectionViewController alloc]initWithCollectionViewLayout:layoutHomePage];
     
     UINavigationController *naviHomePage = [[UINavigationController alloc]initWithRootViewController:homePageC];

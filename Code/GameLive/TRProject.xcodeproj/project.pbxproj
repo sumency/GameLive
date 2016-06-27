@@ -36,6 +36,8 @@
 		525A4D4D1D20D019000E7B16 /* HomePageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525A4D4C1D20D019000E7B16 /* HomePageCollectionViewController.m */; };
 		525A4D501D20D40E000E7B16 /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525A4D4F1D20D40E000E7B16 /* MyTableViewController.m */; };
 		525A4D531D20FFE7000E7B16 /* HomePageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 525A4D521D20FFE7000E7B16 /* HomePageViewModel.m */; };
+		525A4D571D2111FA000E7B16 /* FirstCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 525A4D551D2111FA000E7B16 /* FirstCollectionReusableView.m */; };
+		525A4D581D2111FA000E7B16 /* FirstCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525A4D561D2111FA000E7B16 /* FirstCollectionReusableView.xib */; };
 		70547C9E1D1D67840073601A /* AdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70547C9D1D1D67840073601A /* AdModel.m */; };
 		70F55B491D1C3AF900E6C04A /* CategoriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F55B481D1C3AF900E6C04A /* CategoriesModel.m */; };
 /* End PBXBuildFile section */
@@ -95,6 +97,9 @@
 		525A4D4F1D20D40E000E7B16 /* MyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewController.m; sourceTree = "<group>"; };
 		525A4D511D20FFE7000E7B16 /* HomePageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewModel.h; sourceTree = "<group>"; };
 		525A4D521D20FFE7000E7B16 /* HomePageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewModel.m; sourceTree = "<group>"; };
+		525A4D541D2111FA000E7B16 /* FirstCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstCollectionReusableView.h; sourceTree = "<group>"; };
+		525A4D551D2111FA000E7B16 /* FirstCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstCollectionReusableView.m; sourceTree = "<group>"; };
+		525A4D561D2111FA000E7B16 /* FirstCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstCollectionReusableView.xib; sourceTree = "<group>"; };
 		70547C9C1D1D67840073601A /* AdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdModel.h; sourceTree = "<group>"; };
 		70547C9D1D1D67840073601A /* AdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdModel.m; sourceTree = "<group>"; };
 		70F55B471D1C3AF900E6C04A /* CategoriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesModel.h; sourceTree = "<group>"; };
@@ -289,6 +294,9 @@
 				524A1AB21D1FD5B6003EAB6F /* DetailLiveCollectionViewCell.h */,
 				524A1AB31D1FD5B6003EAB6F /* DetailLiveCollectionViewCell.m */,
 				524A1AB41D1FD5B6003EAB6F /* DetailLiveCollectionViewCell.xib */,
+				525A4D541D2111FA000E7B16 /* FirstCollectionReusableView.h */,
+				525A4D551D2111FA000E7B16 /* FirstCollectionReusableView.m */,
+				525A4D561D2111FA000E7B16 /* FirstCollectionReusableView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -368,6 +376,7 @@
 				38A641F91C8C225D00FCBF96 /* LaunchScreen.storyboard in Resources */,
 				524A1AB61D1FD5B6003EAB6F /* DetailLiveCollectionViewCell.xib in Resources */,
 				38A641F81C8C225D00FCBF96 /* Assets.xcassets in Resources */,
+				525A4D581D2111FA000E7B16 /* FirstCollectionReusableView.xib in Resources */,
 				38A641FA1C8C225D00FCBF96 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +451,7 @@
 				524A1AB51D1FD5B6003EAB6F /* DetailLiveCollectionViewCell.m in Sources */,
 				524EE6361D1CB9CF004AB64E /* HomePageModel.m in Sources */,
 				524A1AB91D1FDA7F003EAB6F /* DetailLiveCollectionViewController.m in Sources */,
+				525A4D571D2111FA000E7B16 /* FirstCollectionReusableView.m in Sources */,
 				525A4D4D1D20D019000E7B16 /* HomePageCollectionViewController.m in Sources */,
 				38A1A3371C74526C007EEEB7 /* ViewController.m in Sources */,
 				524EE6331D1CB417004AB64E /* LiveModel.m in Sources */,
