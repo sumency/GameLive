@@ -11,7 +11,7 @@
 #import "DetailLiveViewMode.h"
 @import AVFoundation;
 @import AVKit;
-@interface DetailLiveCollectionViewController ()
+@interface DetailLiveCollectionViewController ()<UICollectionViewDelegateFlowLayout>
 @property (nonatomic) DetailLiveViewMode *detailVM;
 
 @end
@@ -32,19 +32,15 @@ static NSString * const reuseIdentifier = @"Cell";
     return self;
 }
 
-- (void)showList:sender{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     if (self.gameName == nil) {
         self.navigationItem.title = @"直播";
     }else{
         self.navigationItem.title = self.CNName;
+        
     }
-    
-    //    UIBarButtonItem *btn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"全屏返回-默认@2x.png.base.universal.regular.off.horizontal.normal.active.onepartscale.onepart.38840.000.00.@2x"] style:UIBarButtonItemStyleBordered target:self action:@selector(showList:)];
-    //     self.navigationItem.leftBarButtonItem = btn;
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
     [self.collectionView registerNib:[UINib nibWithNibName:@"DetailLiveCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
@@ -107,7 +103,9 @@ static NSString * const reuseIdentifier = @"Cell";
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     AVPlayerViewController *vc = [AVPlayerViewController new];
     vc.player = [AVPlayer playerWithURL:[NSString stringWithFormat:kVedio,[self.detailVM uidForRow:indexPath.row]].yx_URL];
+     NSLog(@"%@",[NSString stringWithFormat:kVedio,[self.detailVM uidForRow:indexPath.row]]);
     [vc.player play];
+   
     [self presentViewController:vc animated:YES completion:nil];
 }
 

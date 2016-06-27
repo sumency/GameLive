@@ -25,7 +25,7 @@
 - (NSString *)viewForRow:(NSInteger)row{
     NSInteger num = ([self modelForRow:row].view).integerValue;
     if (num >= 10000) {
-        NSString *tmp = [NSString stringWithFormat:@"%.2f万",num/10000.0];
+        NSString *tmp = [NSString stringWithFormat:@"%.1f万",num/10000.0];
         return tmp;
     }else{
         return [NSString stringWithFormat:@"%ld",num];

@@ -33,6 +33,9 @@
 		524A1AB91D1FDA7F003EAB6F /* DetailLiveCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 524A1AB81D1FDA7F003EAB6F /* DetailLiveCollectionViewController.m */; };
 		524EE6331D1CB417004AB64E /* LiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 524EE6321D1CB417004AB64E /* LiveModel.m */; };
 		524EE6361D1CB9CF004AB64E /* HomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 524EE6351D1CB9CF004AB64E /* HomePageModel.m */; };
+		525A4D4D1D20D019000E7B16 /* HomePageCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525A4D4C1D20D019000E7B16 /* HomePageCollectionViewController.m */; };
+		525A4D501D20D40E000E7B16 /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525A4D4F1D20D40E000E7B16 /* MyTableViewController.m */; };
+		525A4D531D20FFE7000E7B16 /* HomePageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 525A4D521D20FFE7000E7B16 /* HomePageViewModel.m */; };
 		70547C9E1D1D67840073601A /* AdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70547C9D1D1D67840073601A /* AdModel.m */; };
 		70F55B491D1C3AF900E6C04A /* CategoriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F55B481D1C3AF900E6C04A /* CategoriesModel.m */; };
 /* End PBXBuildFile section */
@@ -86,6 +89,12 @@
 		524EE6321D1CB417004AB64E /* LiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveModel.m; sourceTree = "<group>"; };
 		524EE6341D1CB9CF004AB64E /* HomePageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageModel.h; sourceTree = "<group>"; };
 		524EE6351D1CB9CF004AB64E /* HomePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageModel.m; sourceTree = "<group>"; };
+		525A4D4B1D20D019000E7B16 /* HomePageCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCollectionViewController.h; sourceTree = "<group>"; };
+		525A4D4C1D20D019000E7B16 /* HomePageCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageCollectionViewController.m; sourceTree = "<group>"; };
+		525A4D4E1D20D40E000E7B16 /* MyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewController.h; sourceTree = "<group>"; };
+		525A4D4F1D20D40E000E7B16 /* MyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewController.m; sourceTree = "<group>"; };
+		525A4D511D20FFE7000E7B16 /* HomePageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewModel.h; sourceTree = "<group>"; };
+		525A4D521D20FFE7000E7B16 /* HomePageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewModel.m; sourceTree = "<group>"; };
 		70547C9C1D1D67840073601A /* AdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdModel.h; sourceTree = "<group>"; };
 		70547C9D1D1D67840073601A /* AdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdModel.m; sourceTree = "<group>"; };
 		70F55B471D1C3AF900E6C04A /* CategoriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesModel.h; sourceTree = "<group>"; };
@@ -201,6 +210,10 @@
 				524A1AAD1D1FC245003EAB6F /* LanMuCollectionViewController.m */,
 				524A1AB71D1FDA7F003EAB6F /* DetailLiveCollectionViewController.h */,
 				524A1AB81D1FDA7F003EAB6F /* DetailLiveCollectionViewController.m */,
+				525A4D4B1D20D019000E7B16 /* HomePageCollectionViewController.h */,
+				525A4D4C1D20D019000E7B16 /* HomePageCollectionViewController.m */,
+				525A4D4E1D20D40E000E7B16 /* MyTableViewController.h */,
+				525A4D4F1D20D40E000E7B16 /* MyTableViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -214,6 +227,8 @@
 				524A1AA61D1FC051003EAB6F /* CategoriesViewModel.m */,
 				524A1AAF1D1FCBD4003EAB6F /* DetailLiveViewMode.h */,
 				524A1AB01D1FCBD4003EAB6F /* DetailLiveViewMode.m */,
+				525A4D511D20FFE7000E7B16 /* HomePageViewModel.h */,
+				525A4D521D20FFE7000E7B16 /* HomePageViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -412,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525A4D531D20FFE7000E7B16 /* HomePageViewModel.m in Sources */,
 				70547C9E1D1D67840073601A /* AdModel.m in Sources */,
 				382C976A1C81D686003D1D51 /* UIView+HUD.m in Sources */,
 				524A1AA71D1FC051003EAB6F /* CategoriesViewModel.m in Sources */,
@@ -426,9 +442,11 @@
 				524A1AB51D1FD5B6003EAB6F /* DetailLiveCollectionViewCell.m in Sources */,
 				524EE6361D1CB9CF004AB64E /* HomePageModel.m in Sources */,
 				524A1AB91D1FDA7F003EAB6F /* DetailLiveCollectionViewController.m in Sources */,
+				525A4D4D1D20D019000E7B16 /* HomePageCollectionViewController.m in Sources */,
 				38A1A3371C74526C007EEEB7 /* ViewController.m in Sources */,
 				524EE6331D1CB417004AB64E /* LiveModel.m in Sources */,
 				38A1A3481C745317007EEEB7 /* UIScrollView+Refresh.m in Sources */,
+				525A4D501D20D40E000E7B16 /* MyTableViewController.m in Sources */,
 				3851FBE11D0F0C110054BDA0 /* TRBaseViewModel.m in Sources */,
 				382C11831C7E8CDD00F34BB0 /* AppDelegate+System.m in Sources */,
 				524A1AAE1D1FC245003EAB6F /* LanMuCollectionViewController.m in Sources */,
@@ -528,7 +546,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = $PRODUCT_NAME/PrefixHeader.pch;
 				INFOPLIST_FILE = TRProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarena.TRProject.gamelive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -545,7 +563,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = $PRODUCT_NAME/PrefixHeader.pch;
 				INFOPLIST_FILE = TRProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tarena.TRProject.gamelive;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -73,17 +73,23 @@ static NSString * const reuseIdentifier = @"Cell";
     CGFloat h = w * 100 / 156 + 40;
     layout.itemSize = CGSizeMake(w, h);
     DetailLiveCollectionViewController *dvc = [[DetailLiveCollectionViewController alloc]initWithCollectionViewLayout:layout];
+    dvc.hidesBottomBarWhenPushed = YES;
     dvc.gameName = [self.lanMuVM gameNameForIndex:indexPath.row];
     dvc.CNName = [self.lanMuVM titleForIndex:indexPath.row];
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"a"] style:UIBarButtonItemStyleDone target:self action:@selector(showList:)];
+    dvc.navigationItem.leftBarButtonItem = btn;
+    
     [self.navigationController pushViewController:dvc animated:YES];
 }
-
+- (void)showList:sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 #pragma mark - 懒加载 Lazy Load
 - (CategoriesViewModel *)lanMuVM {
-	if(_lanMuVM == nil) {
-		_lanMuVM = [[CategoriesViewModel alloc] init];
-	}
-	return _lanMuVM;
+    if(_lanMuVM == nil) {
+        _lanMuVM = [[CategoriesViewModel alloc] init];
+    }
+    return _lanMuVM;
 }
 
 @end

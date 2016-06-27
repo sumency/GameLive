@@ -12,7 +12,7 @@
 
 @implementation NSObject (AFNetworking)
 + (id)GET:(NSString *)path parameters:(id)parameters progress:(void (^)(NSProgress *))downloadProgress completionHandler:(void (^)(id, NSError *))completionHandler{
-    /*
+  /*
      if (!kAppDelegate.isOnLine) {
      [kAppDelegate.window showWarning:@"当前离线状态!"];
      NSError *error = [NSError errorWithDomain:@"" code:999 userInfo:@{}];

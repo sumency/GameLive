@@ -6,7 +6,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "我的-焦点@2x.png.base.universal.regular.off.horizontal.normal.active.onepartscale.onepart.1391.000.00.@2x.png",
+      "filename" : "a.png",
       "scale" : "2x"
     },
     {
@@ -17,8 +17,5 @@
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "original"
   }
 }
