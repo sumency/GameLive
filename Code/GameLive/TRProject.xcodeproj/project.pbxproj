@@ -39,8 +39,6 @@
 		525A4D571D2111FA000E7B16 /* FirstCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 525A4D551D2111FA000E7B16 /* FirstCollectionReusableView.m */; };
 		525A4D581D2111FA000E7B16 /* FirstCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525A4D561D2111FA000E7B16 /* FirstCollectionReusableView.xib */; };
 		527AC78B1D22497800BC067E /* TopCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 527AC78A1D22497800BC067E /* TopCollectionReusableView.m */; };
-		527AC9A51D22680E00BC067E /* SmallCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 527AC9A31D22680E00BC067E /* SmallCollectionViewCell.m */; };
-		527AC9A61D22680E00BC067E /* SmallCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527AC9A41D22680E00BC067E /* SmallCollectionViewCell.xib */; };
 		70547C9E1D1D67840073601A /* AdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70547C9D1D1D67840073601A /* AdModel.m */; };
 		70F55B491D1C3AF900E6C04A /* CategoriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F55B481D1C3AF900E6C04A /* CategoriesModel.m */; };
 /* End PBXBuildFile section */
@@ -105,9 +103,6 @@
 		525A4D561D2111FA000E7B16 /* FirstCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstCollectionReusableView.xib; sourceTree = "<group>"; };
 		527AC7891D22497800BC067E /* TopCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCollectionReusableView.h; sourceTree = "<group>"; };
 		527AC78A1D22497800BC067E /* TopCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCollectionReusableView.m; sourceTree = "<group>"; };
-		527AC9A21D22680E00BC067E /* SmallCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallCollectionViewCell.h; sourceTree = "<group>"; };
-		527AC9A31D22680E00BC067E /* SmallCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmallCollectionViewCell.m; sourceTree = "<group>"; };
-		527AC9A41D22680E00BC067E /* SmallCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallCollectionViewCell.xib; sourceTree = "<group>"; };
 		70547C9C1D1D67840073601A /* AdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdModel.h; sourceTree = "<group>"; };
 		70547C9D1D1D67840073601A /* AdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdModel.m; sourceTree = "<group>"; };
 		70F55B471D1C3AF900E6C04A /* CategoriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesModel.h; sourceTree = "<group>"; };
@@ -307,9 +302,6 @@
 				525A4D561D2111FA000E7B16 /* FirstCollectionReusableView.xib */,
 				527AC7891D22497800BC067E /* TopCollectionReusableView.h */,
 				527AC78A1D22497800BC067E /* TopCollectionReusableView.m */,
-				527AC9A21D22680E00BC067E /* SmallCollectionViewCell.h */,
-				527AC9A31D22680E00BC067E /* SmallCollectionViewCell.m */,
-				527AC9A41D22680E00BC067E /* SmallCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -387,7 +379,6 @@
 			files = (
 				3851FBDE1D0F0A750054BDA0 /* Info.plist in Resources */,
 				38A641F91C8C225D00FCBF96 /* LaunchScreen.storyboard in Resources */,
-				527AC9A61D22680E00BC067E /* SmallCollectionViewCell.xib in Resources */,
 				524A1AB61D1FD5B6003EAB6F /* DetailLiveCollectionViewCell.xib in Resources */,
 				38A641F81C8C225D00FCBF96 /* Assets.xcassets in Resources */,
 				525A4D581D2111FA000E7B16 /* FirstCollectionReusableView.xib in Resources */,
@@ -474,7 +465,6 @@
 				525A4D501D20D40E000E7B16 /* MyTableViewController.m in Sources */,
 				3851FBE11D0F0C110054BDA0 /* TRBaseViewModel.m in Sources */,
 				382C11831C7E8CDD00F34BB0 /* AppDelegate+System.m in Sources */,
-				527AC9A51D22680E00BC067E /* SmallCollectionViewCell.m in Sources */,
 				524A1AAE1D1FC245003EAB6F /* LanMuCollectionViewController.m in Sources */,
 				38ADA3B81C626AAF0093502F /* main.m in Sources */,
 			);
