@@ -18,5 +18,6 @@
 - (NSString *)CNNameForSecion:(NSInteger)section;
 - (NSString *)ENNameForSecion:(NSInteger)section;
 
-
+- (NSURL *)smallURLForRow:(NSInteger)row;
+- (NSString *)smallTitleForRow:(NSInteger)row;
 @end
