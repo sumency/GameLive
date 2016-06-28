@@ -1,7 +1,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class Recommend,ReData,InData;
+@class Recommend,ReData,InData,Ext;
 
 @interface LiveModel : NSObject
 
@@ -54,7 +54,7 @@
 
 @property (nonatomic, strong) InData *link_object;
 
-@property (nonatomic, copy) NSString *ext;
+@property (nonatomic, strong) Ext *ext;
 
 @property (nonatomic, assign) NSInteger status;
 
@@ -62,6 +62,9 @@
 
 @end
 
+@interface Ext : NSObject
+@property (nonatomic, copy) NSString *classification;
+@end
 
 @interface InData : NSObject
 

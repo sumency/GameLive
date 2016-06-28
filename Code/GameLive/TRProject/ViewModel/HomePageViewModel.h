@@ -20,4 +20,6 @@
 
 - (NSURL *)smallURLForRow:(NSInteger)row;
 - (NSString *)smallTitleForRow:(NSInteger)row;
+
+- (NSString *)gameNameForRow:(NSInteger)row;
 @end

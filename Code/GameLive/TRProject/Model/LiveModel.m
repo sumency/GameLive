@@ -25,6 +25,9 @@
 +(NSDictionary<NSString *,id> *)modelCustomPropertyMapper{
     return @{@"newst":@"new_start_time"};
 }
-@end
 
+@end
+@implementation Ext
+
+@end
 

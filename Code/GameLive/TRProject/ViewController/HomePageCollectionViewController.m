@@ -11,12 +11,17 @@
 #import "DetailLiveCollectionViewCell.h"
 #import "HomePageViewModel.h"
 #import "DetailLiveCollectionViewController.h"
-#import "TopCollectionReusableView.h"
-
-@interface HomePageCollectionViewController ()<iCarouselDelegate, iCarouselDataSource>
+#import <iCarousel.h>
+@import AVFoundation;
+@import AVKit;
+@interface HomePageCollectionViewController ()<iCarouselDelegate, iCarouselDataSource>{
+    NSTimer *_timer;
+}
 @property (nonatomic) HomePageViewModel *homePageVM;
 @property (nonatomic) iCarousel *ic;
+@property (nonatomic) iCarousel *icTop;
 
+@property (nonatomic) UIPageControl *pc;
 @end
 
 @implementation HomePageCollectionViewController
@@ -55,6 +60,10 @@ static NSString * const reuseIdentifier = @"Cell";
                 NSLog(@"%@",self.homePageVM);
                 
                 [self.collectionView reloadData];
+                [self carouselCurrentItemIndexDidChange:self.icTop];
+                _timer = [NSTimer bk_scheduledTimerWithTimeInterval:2 block:^(NSTimer *timer) {
+                    [_icTop scrollToItemAtIndex:_icTop.currentItemIndex+1 animated:YES];
+                } repeats:YES];
             }
         }];
     }];
@@ -63,9 +72,11 @@ static NSString * const reuseIdentifier = @"Cell";
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"lixi2" forIndexPath:indexPath];
-        UIView *iv = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 100)];
-        iv.backgroundColor = [UIColor yellowColor];
-        [headerView addSubview:iv];
+        
+        [headerView addSubview:self.icTop];
+        [self.icTop mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(0);
+        }];
         return headerView;
     }else{
         FirstCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"lixi" forIndexPath:indexPath];
@@ -101,7 +112,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return CGSizeMake(1, 150);
+        return CGSizeMake(1, 180);
     }else{
         return CGSizeMake(300, 40);
     }
@@ -116,7 +127,7 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return self.homePageVM.numForSection;
+    return self.homePageVM.numForSection-1;
 }
 
 
@@ -149,6 +160,7 @@ static NSString * const reuseIdentifier = @"Cell";
         cell.viewNum.text = [self.homePageVM viewForRow:indexPath.row section:indexPath.section];
         return cell;
     }
+    
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -181,6 +193,95 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 
+
+
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel{
+    if (carousel.tag == 100) {
+        return 7;
+    }
+    else if (carousel.tag == 200) {
+        return 4;
+    }else{
+        return 4;
+    }
+}
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view{
+    NSLog(@"cell:%ld",(long)carousel.tag);
+    if (carousel.tag == 100) {
+        if (!view) {
+            view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, 60)];
+            UIImageView *iv = [UIImageView new];
+            iv.tag = 100;
+            [view addSubview:iv];
+            [iv mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.height.width.equalTo(40);
+                make.top.equalTo(0);
+                make.centerX.equalTo(0);
+            }];
+            iv.contentMode = UIViewContentModeScaleAspectFill;
+            iv.layer.cornerRadius = 20;
+            iv.clipsToBounds = YES;
+            UILabel *lab = [UILabel new];
+            lab.tag = 101;
+            [view addSubview:lab];
+            [lab mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(iv.mas_bottom);
+                make.centerX.equalTo(0);
+            }];
+            lab.font = [UIFont systemFontOfSize:10];
+            lab.textColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1.0];
+        }
+        UILabel *lab = (UILabel *)[view viewWithTag:101];
+        lab.text = [self.homePageVM smallTitleForRow:index];
+        UIImageView *iv = (UIImageView *)[view viewWithTag:100];
+        [iv sd_setImageWithURL:[self.homePageVM smallURLForRow:index]];
+        iv.clipsToBounds = YES;
+        return view;
+    }
+    if (carousel.tag == 200) {
+        if (!view) {
+            view = [[UIView alloc] initWithFrame:carousel.bounds];
+            view.backgroundColor = [UIColor cyanColor];
+            UIImageView *iv = [UIImageView new];
+            iv.tag = 100;
+            [view addSubview:iv];
+            [iv mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(0);
+            }];
+            iv.contentMode = UIViewContentModeScaleAspectFill;
+            UILabel *lab = [UILabel new];
+            lab.tag = 101;
+            [iv addSubview:lab];
+            [lab mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(10);
+                make.bottom.equalTo(-10);
+            }];
+            lab.font = [UIFont systemFontOfSize:12];
+            lab.textColor = [UIColor whiteColor];
+            
+        }
+        UILabel *lab = (UILabel *)[view viewWithTag:101];
+        lab.text = [self.homePageVM titleForRow:index section:0];
+        UIImageView *iv = (UIImageView *)[view viewWithTag:100];
+        [iv sd_setImageWithURL:[self.homePageVM coverURLForRow:index section:0]];
+        iv.clipsToBounds = YES;
+        return view;
+        
+    }
+    return [UIView new];
+}
+- (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value{
+    if (option == iCarouselOptionWrap) {
+        value = YES;
+    }
+    return value;
+}
+- (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel{
+    if (carousel.tag == 200) {
+        _pc.currentPage = carousel.currentItemIndex;
+        
+    }
+}
 - (iCarousel *)ic {
     if(_ic == nil) {
         _ic = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, 0, 60)];
@@ -192,45 +293,76 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     return _ic;
 }
+- (iCarousel *)icTop {
+    if(_icTop == nil) {
+        _icTop = [[iCarousel alloc] initWithFrame:CGRectMake(0, 0, 0, 150)];
+        _icTop.backgroundColor = [UIColor cyanColor];
+        _icTop.delegate = self;
+        _icTop.dataSource = self;
+        _icTop.autoscroll = 0;
+        _icTop.scrollSpeed = .1;
+        _icTop.tag = 200;
+        _pc = [UIPageControl new];
+        [_icTop addSubview:_pc];
+        [_pc mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(-10);
+            make.bottom.equalTo(2);
+        }];
+        _pc.numberOfPages = 4;
+        _pc.userInteractionEnabled = NO;
+        _pc.pageIndicatorTintColor = [UIColor grayColor];
+        _pc.currentPageIndicatorTintColor = [UIColor whiteColor];
+    }
+    return _icTop;
+}
 
-- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel{
-    return 7;
-}
-- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view{
-    if (!view) {
-        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
-        UIImageView *iv = [UIImageView new];
-        iv.tag = 100;
-        [view addSubview:iv];
-        [iv mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.width.equalTo(40);
-            make.top.equalTo(0);
-            make.centerX.equalTo(0);
-        }];
-        iv.contentMode = UIViewContentModeScaleAspectFill;
-        iv.layer.cornerRadius = 20;
-        iv.clipsToBounds = YES;
-        UILabel *lab = [UILabel new];
-        lab.tag = 101;
-        [view addSubview:lab];
-        [lab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(iv.mas_bottom);
-            make.centerX.equalTo(0);
-        }];
-        lab.font = [UIFont systemFontOfSize:10];
-        lab.textColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1.0];
+- (UIPageControl *)pc {
+    if(_pc == nil) {
+        _pc = [[UIPageControl alloc] init];
     }
-    UILabel *lab = (UILabel *)[view viewWithTag:101];
-    lab.text = [self.homePageVM smallTitleForRow:index];
-    UIImageView *iv = (UIImageView *)[view viewWithTag:100];
-    [iv sd_setImageWithURL:[self.homePageVM smallURLForRow:index]];
-    iv.clipsToBounds = YES;
-    return view;
+    return _pc;
 }
-- (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value{
-    if (option == iCarouselOptionWrap) {
-        value = YES;
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    AVPlayerViewController *vc = [AVPlayerViewController new];
+    vc.player = [AVPlayer playerWithURL:[NSString stringWithFormat:kVedio,[self.homePageVM uidForRow:indexPath.row section:indexPath.section]].yx_URL];
+    [vc.player play];
+    
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+-(void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
+    if (carousel.tag == 100) {
+        
+        UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+        layout.minimumLineSpacing = 10;
+        layout.minimumInteritemSpacing = 10;
+        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        CGFloat w = lround(([UIScreen mainScreen].bounds.size.width - 30) / 2);
+        //    156*100
+        CGFloat h = w * 100 / 156 + 40;
+        layout.itemSize = CGSizeMake(w, h);
+        DetailLiveCollectionViewController *dvc = [[DetailLiveCollectionViewController alloc]initWithCollectionViewLayout:layout];
+        dvc.hidesBottomBarWhenPushed = YES;
+        dvc.gameName = [self.homePageVM gameNameForRow:index];
+        dvc.CNName = [self.homePageVM CNNameForSecion:index];
+        UIBarButtonItem *btn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"a"] style:UIBarButtonItemStyleDone target:self action:@selector(showList:)];
+        dvc.navigationItem.leftBarButtonItem = btn;
+        
+        [self.navigationController pushViewController:dvc animated:YES];
     }
-    return value;
+    if (carousel.tag == 200) {
+        AVPlayerViewController *vc = [AVPlayerViewController new];
+        vc.player = [AVPlayer playerWithURL:[NSString stringWithFormat:kVedio,[self.homePageVM uidForRow:index section:0]].yx_URL];
+        [vc.player play];
+        
+        [self presentViewController:vc animated:YES completion:nil];
+    }
+    
 }
+- (void)showList:sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

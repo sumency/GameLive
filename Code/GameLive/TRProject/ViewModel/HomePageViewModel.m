@@ -52,6 +52,9 @@
 -(NSString *)smallTitleForRow:(NSInteger)row{
     return self.dataList[14][row].title;
 }
+-(NSString *)gameNameForRow:(NSInteger)row{
+    return self.dataList[14][row].ext.classification;
+}
 -(void)getDataWithRequestMode:(VMRequestMode)requestMode completionHandler:(void (^)(NSError *))completionHandler{
     _dataTask = [NetManager getHomePageComletionHandler:^(id model, NSError *error) {
         if (error) {
