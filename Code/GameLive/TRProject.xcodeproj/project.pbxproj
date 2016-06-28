@@ -38,6 +38,7 @@
 		525A4D531D20FFE7000E7B16 /* HomePageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 525A4D521D20FFE7000E7B16 /* HomePageViewModel.m */; };
 		525A4D571D2111FA000E7B16 /* FirstCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 525A4D551D2111FA000E7B16 /* FirstCollectionReusableView.m */; };
 		525A4D581D2111FA000E7B16 /* FirstCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 525A4D561D2111FA000E7B16 /* FirstCollectionReusableView.xib */; };
+		527AC78B1D22497800BC067E /* TopCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 527AC78A1D22497800BC067E /* TopCollectionReusableView.m */; };
 		70547C9E1D1D67840073601A /* AdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70547C9D1D1D67840073601A /* AdModel.m */; };
 		70F55B491D1C3AF900E6C04A /* CategoriesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F55B481D1C3AF900E6C04A /* CategoriesModel.m */; };
 /* End PBXBuildFile section */
@@ -100,6 +101,8 @@
 		525A4D541D2111FA000E7B16 /* FirstCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstCollectionReusableView.h; sourceTree = "<group>"; };
 		525A4D551D2111FA000E7B16 /* FirstCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstCollectionReusableView.m; sourceTree = "<group>"; };
 		525A4D561D2111FA000E7B16 /* FirstCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstCollectionReusableView.xib; sourceTree = "<group>"; };
+		527AC7891D22497800BC067E /* TopCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCollectionReusableView.h; sourceTree = "<group>"; };
+		527AC78A1D22497800BC067E /* TopCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCollectionReusableView.m; sourceTree = "<group>"; };
 		70547C9C1D1D67840073601A /* AdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdModel.h; sourceTree = "<group>"; };
 		70547C9D1D1D67840073601A /* AdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdModel.m; sourceTree = "<group>"; };
 		70F55B471D1C3AF900E6C04A /* CategoriesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesModel.h; sourceTree = "<group>"; };
@@ -269,8 +272,8 @@
 				38A1A3301C74526C007EEEB7 /* Tool */,
 				38A1A3311C74526C007EEEB7 /* Vendor */,
 				38A1A3331C74526C007EEEB7 /* ViewController */,
-				524A1AA81D1FC062003EAB6F /* View */,
 				38A1A3361C74526C007EEEB7 /* ViewModel */,
+				524A1AA81D1FC062003EAB6F /* View */,
 				38ADA3B61C626AAF0093502F /* Supporting Files */,
 			);
 			path = TRProject;
@@ -297,6 +300,8 @@
 				525A4D541D2111FA000E7B16 /* FirstCollectionReusableView.h */,
 				525A4D551D2111FA000E7B16 /* FirstCollectionReusableView.m */,
 				525A4D561D2111FA000E7B16 /* FirstCollectionReusableView.xib */,
+				527AC7891D22497800BC067E /* TopCollectionReusableView.h */,
+				527AC78A1D22497800BC067E /* TopCollectionReusableView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 				524A1AB91D1FDA7F003EAB6F /* DetailLiveCollectionViewController.m in Sources */,
 				525A4D571D2111FA000E7B16 /* FirstCollectionReusableView.m in Sources */,
 				525A4D4D1D20D019000E7B16 /* HomePageCollectionViewController.m in Sources */,
+				527AC78B1D22497800BC067E /* TopCollectionReusableView.m in Sources */,
 				38A1A3371C74526C007EEEB7 /* ViewController.m in Sources */,
 				524EE6331D1CB417004AB64E /* LiveModel.m in Sources */,
 				38A1A3481C745317007EEEB7 /* UIScrollView+Refresh.m in Sources */,

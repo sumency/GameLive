@@ -9,16 +9,19 @@
 #import "HomePageCollectionViewController.h"
 #import "FirstCollectionReusableView.h"
 #import "DetailLiveCollectionViewCell.h"
-#import "DetailLiveViewMode.h"
+#import "HomePageViewModel.h"
+#import "DetailLiveCollectionViewController.h"
+#import "TopCollectionReusableView.h"
 @interface HomePageCollectionViewController ()<UICollectionViewDelegateFlowLayout>
-@property (nonatomic) DetailLiveViewMode *detailVM;
+@property (nonatomic) HomePageViewModel *homePageVM;
+
 @end
 
 @implementation HomePageCollectionViewController
 
 -(instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout{
     if (self = [super initWithCollectionViewLayout:layout]) {
-        self.tabBarItem.title = @"首页";
+        self.title = @"首页";
         self.tabBarItem.image = [UIImage imageNamed:@"推荐-默认@2x.png.base.universal.regular.off.horizontal.normal.active.onepartscale.onepart.54283.000.00."];
         self.tabBarItem.selectedImage = [UIImage imageNamed:@"推荐-焦点@2x.png.base.universal.regular.off.horizontal.normal.active.onepartscale.onepart.19656.000.00."];
     }
@@ -37,8 +40,10 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"DetailLiveCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     
+    [self.collectionView registerClass:[TopCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader  withReuseIdentifier:@"lixi2"];
+    
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self.detailVM getDataWithRequestMode:VMRequestModeRefresh completionHandler:^(NSError *error) {
+        [self.homePageVM getDataWithRequestMode:VMRequestModeRefresh completionHandler:^(NSError *error) {
             [self.collectionView.mj_header endRefreshing];
             if (error) {
                 DDLogError(@"%@",error);
@@ -51,22 +56,60 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-    FirstCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"lixi" forIndexPath:indexPath];
-    headerView.title.text = @"李西";
-    
-    return headerView;
+    if (indexPath.section == 0) {
+        TopCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"lixi2" forIndexPath:indexPath];
+        return headerView;
+    }else{
+        FirstCollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"lixi" forIndexPath:indexPath];
+        if (indexPath.section == 0) {
+            
+        }else if(indexPath.section == 1){
+            headerView.title.text = @"精彩推荐";
+        }else{
+            headerView.title.text = [self.homePageVM CNNameForSecion:indexPath.section];
+        }
+        [headerView.haveSee removeAllTargets];
+        [headerView.haveSee bk_addEventHandler:^(id sender) {
+            
+            UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+            layout.minimumLineSpacing = 10;
+            layout.minimumInteritemSpacing = 10;
+            layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+            layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+            CGFloat w = lround(([UIScreen mainScreen].bounds.size.width - 30) / 2);
+            //    156*100
+            CGFloat h = w * 100 / 156 + 40;
+            layout.itemSize = CGSizeMake(w, h);
+            DetailLiveCollectionViewController *dvc = [[DetailLiveCollectionViewController alloc]initWithCollectionViewLayout:layout];
+            dvc.hidesBottomBarWhenPushed = YES;
+            dvc.gameName = [self.homePageVM ENNameForSecion:indexPath.section];
+            dvc.CNName = [self.homePageVM CNNameForSecion:indexPath.section];
+            [self.navigationController pushViewController:dvc animated:YES];
+            
+        } forControlEvents:UIControlEventTouchUpInside];
+        headerView.image.image = [UIImage imageNamed:@"弹幕-默认@2x.png.base.universal.regular.off.horizontal.normal.active.onepartscale.onepart.49182.000.00."];
+        return headerView;
+    }
+}
+
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return CGSizeMake(1, 100);
+    }else{
+        return CGSizeMake(300, 40);}
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
+    
 }
 
 
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 14;
+    return self.homePageVM.numForSection;
 }
 
 
@@ -77,19 +120,12 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DetailLiveCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-//    [cell.iv sd_setImageWithURL:[self.detailVM coverURLForRow:indexPath.row]];
-//    [cell.nick sd_setImageWithURL:[self.detailVM iconURLForRow:indexPath.row]];
-//    cell.title.text = [self.detailVM titleForRow:indexPath.row];
-//    cell.duan.text = [self.detailVM nickForRow:indexPath.row];
-//    cell.viewNum.text = [self.detailVM viewForRow:indexPath.row];
+    [cell.iv sd_setImageWithURL:[self.homePageVM coverURLForRow:indexPath.row section:indexPath.section]];
+    [cell.nick sd_setImageWithURL:[self.homePageVM iconURLForRow:indexPath.row section:indexPath.section]];
+    cell.title.text = [self.homePageVM titleForRow:indexPath.row section:indexPath.section];
+    cell.duan.text = [self.homePageVM nickForRow:indexPath.row section:indexPath.section];
+    cell.viewNum.text = [self.homePageVM viewForRow:indexPath.row section:indexPath.section];
     return cell;
-}
-
-- (DetailLiveViewMode *)detailVM {
-	if(_detailVM == nil) {
-		_detailVM = [[DetailLiveViewMode alloc] init];
-	}
-	return _detailVM;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -106,6 +142,13 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
     return 10;
+}
+
+- (HomePageViewModel *)homePageVM {
+    if(_homePageVM == nil) {
+        _homePageVM = [[HomePageViewModel alloc] init];
+    }
+    return _homePageVM;
 }
 
 @end

@@ -12,7 +12,7 @@
 #define kCategoriesGameListFirst @"/json/categories/%@/list.json"
 #define kCategoriesGameList @"/json/categories/%@/list_%ld.json"
 
-#define kHomePagePath @"/json/page/app-index/info.json"
+#define kHomePagePath @"/json/page/appv2-index/info.json"
 
 #define kAdPath @"/json/page/ad-slot/info.json"
 

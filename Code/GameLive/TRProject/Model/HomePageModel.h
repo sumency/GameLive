@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSArray<ReData *> *moblieSport;
 
-@property (nonatomic, strong) NSArray<ReData *> *mobileStar;
+@property (nonatomic, strong) NSArray<ReData *> *mobileHuWai;
 
 @property (nonatomic, strong) NSArray<ReData *> *mobileRecommendation;
 
@@ -32,6 +32,9 @@
 
 @property (nonatomic, strong) NSArray<ReData *> *moblieDnf;
 
+@property (nonatomic, strong) NSArray<ReData *> *appOwerWatch;
+
+@property (nonatomic, strong) NSArray<ReData *> *appClassification;
 @end
 
 @interface List : NSObject

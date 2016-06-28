@@ -32,6 +32,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
     self.collectionView.backgroundColor = [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1.0];
     [self.collectionView registerClass:[LanMuCollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self.lanMuVM getDataWithRequestMode:VMRequestModeRefresh completionHandler:^(NSError *error) {
             [self.collectionView.mj_header endRefreshing];
