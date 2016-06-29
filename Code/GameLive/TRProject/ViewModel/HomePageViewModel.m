@@ -61,7 +61,7 @@
             DDLogError(@"%@",error);
         }else{
             if (requestMode == VMRequestModeRefresh) {
-                //                self.dataList = nil;
+                self.dataList = nil;
             }
             NSArray *name = @[@"mobileIndex",@"mobileRecommendation",@"mobileLol",@"mobileBeauty",@"mobileHeartstone",@"mobileHuWai",@"appOwerWatch",@"mobileDota2",@"mobileTvgame",@"moblieBlizzard",@"moblieSport",@"moblieWebgame",@"moblieDnf",@"moblieMinecraft",@"appClassification"];
             

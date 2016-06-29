@@ -47,8 +47,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"DetailLiveCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     
-    //    [self.collectionView registerNib:[UINib nibWithNibName:@"SmallCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"lixi3"];
-    
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"first"];
     
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -61,6 +59,8 @@ static NSString * const reuseIdentifier = @"Cell";
                 
                 [self.collectionView reloadData];
                 [self carouselCurrentItemIndexDidChange:self.icTop];
+                [_timer invalidate];
+                _timer = nil;
                 _timer = [NSTimer bk_scheduledTimerWithTimeInterval:2 block:^(NSTimer *timer) {
                     [_icTop scrollToItemAtIndex:_icTop.currentItemIndex+1 animated:YES];
                 } repeats:YES];
