@@ -22,4 +22,6 @@
 - (NSString *)smallTitleForRow:(NSInteger)row;
 
 - (NSString *)gameNameForRow:(NSInteger)row;
+
+-(NSString *)CNGameNameForRow:(NSInteger)row;
 @end

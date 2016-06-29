@@ -195,15 +195,21 @@ static NSString * const reuseIdentifier = @"Cell";
 
 //此方法无法判断carousel的tag值
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel{
-    if (carousel.tag == 7) {
-        return 7;
-    }
-    else{
+    if (carousel == self.icTop) {
         return 4;
     }
+    else{
+        return 7;
+    }
+//    if (carousel.tag == 4) {
+//        return 4;
+//    }else{
+//        return 7;
+//    }
 }
+
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view{
-    NSLog(@"cell:%ld",(long)carousel.tag);
+//    NSLog(@"cell:%ld",(long)carousel.tag);
     if (carousel.tag == 7) {
         if (!view) {
             view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, 60)];
@@ -330,7 +336,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
     if (carousel.tag == 7) {
-        
+        NSLog(@"%ld",index);
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
         layout.minimumLineSpacing = 10;
         layout.minimumInteritemSpacing = 10;
@@ -338,12 +344,13 @@ static NSString * const reuseIdentifier = @"Cell";
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         CGFloat w = lround(([UIScreen mainScreen].bounds.size.width - 30) / 2);
         //    156*100
+        
         CGFloat h = w * 100 / 156 + 40;
         layout.itemSize = CGSizeMake(w, h);
         DetailLiveCollectionViewController *dvc = [[DetailLiveCollectionViewController alloc]initWithCollectionViewLayout:layout];
         dvc.hidesBottomBarWhenPushed = YES;
         dvc.gameName = [self.homePageVM gameNameForRow:index];
-        dvc.CNName = [self.homePageVM CNNameForSecion:index];
+        dvc.CNName = [self.homePageVM CNGameNameForRow:index];
         UIBarButtonItem *btn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"a"] style:UIBarButtonItemStyleDone target:self action:@selector(showList:)];
         dvc.navigationItem.leftBarButtonItem = btn;
         
