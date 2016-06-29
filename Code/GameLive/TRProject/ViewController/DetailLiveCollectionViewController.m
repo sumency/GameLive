@@ -9,6 +9,7 @@
 #import "DetailLiveCollectionViewController.h"
 #import "DetailLiveCollectionViewCell.h"
 #import "DetailLiveViewMode.h"
+#import "VedioViewController.h"
 @import AVFoundation;
 @import AVKit;
 @interface DetailLiveCollectionViewController ()<UICollectionViewDelegateFlowLayout>
@@ -100,13 +101,21 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    AVPlayerViewController *vc = [AVPlayerViewController new];
-    vc.player = [AVPlayer playerWithURL:[NSString stringWithFormat:kVedio,[self.detailVM uidForRow:indexPath.row]].yx_URL];
-     NSLog(@"%@",[NSString stringWithFormat:kVedio,[self.detailVM uidForRow:indexPath.row]]);
-    [vc.player play];
-   
-    [self presentViewController:vc animated:YES completion:nil];
+//    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+//    AVPlayerViewController *vc = [AVPlayerViewController new];
+//    vc.player = [AVPlayer playerWithURL:[NSString stringWithFormat:kVedio,[self.detailVM uidForRow:indexPath.row]].yx_URL];
+//     NSLog(@"%@",[NSString stringWithFormat:kVedio,[self.detailVM uidForRow:indexPath.row]]);
+//    [vc.player play];
+//   
+//    [self presentViewController:vc animated:YES completion:nil];
+    
+    VedioViewController *vc = [VedioViewController new];
+    vc.url = [NSString stringWithFormat:kVedio,[self.detailVM uidForRow:indexPath.row]].yx_URL;
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.titleName = [self.detailVM nickForRow:indexPath.row];
+    vc.name = [self.detailVM titleForRow:indexPath.row];
+    vc.imgURL = [self.detailVM iconURLForRow:indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (DetailLiveViewMode *)detailVM {

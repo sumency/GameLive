@@ -7,8 +7,9 @@
 //
 
 #import "MyTableViewController.h"
-
+#import "MeTableViewCell.h"
 @interface MyTableViewController ()
+@property (nonatomic) NSArray *titleName;
 
 @end
 
@@ -24,7 +25,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.tableView registerNib:[UINib nibWithNibName:@"MeTableViewCell" bundle:nil] forCellReuseIdentifier:@"lixi"];
     
 }
 
@@ -38,8 +39,22 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
     return 6;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    MeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"lixi" forIndexPath:indexPath];
+    NSString *tmp = [NSString stringWithFormat:@"%ld",indexPath.row];
+    cell.iv.image = [UIImage imageNamed:tmp];
+    cell.lab.text = self.titleName[indexPath.row];
+    return cell;
+}
+- (NSArray *)titleName {
+	if(_titleName == nil) {
+		_titleName = [[NSArray alloc] init];
+        _titleName = @[@"房间管理",@"我的关注",@"观看历史",@"开播提醒",@"新手任务",@"游戏中心"];
+	}
+	return _titleName;
 }
 
 @end

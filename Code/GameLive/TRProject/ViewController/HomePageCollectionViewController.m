@@ -12,6 +12,7 @@
 #import "HomePageViewModel.h"
 #import "DetailLiveCollectionViewController.h"
 #import <iCarousel.h>
+#import "VedioViewController.h"
 @import AVFoundation;
 @import AVKit;
 @interface HomePageCollectionViewController ()<iCarouselDelegate, iCarouselDataSource>{
@@ -101,6 +102,7 @@ static NSString * const reuseIdentifier = @"Cell";
             DetailLiveCollectionViewController *dvc = [[DetailLiveCollectionViewController alloc]initWithCollectionViewLayout:layout];
             dvc.hidesBottomBarWhenPushed = YES;
             dvc.gameName = [self.homePageVM ENNameForSecion:indexPath.section];
+            NSLog(@"%ld",indexPath.section);
             dvc.CNName = [self.homePageVM CNNameForSecion:indexPath.section];
             [self.navigationController pushViewController:dvc animated:YES];
             
@@ -108,6 +110,7 @@ static NSString * const reuseIdentifier = @"Cell";
         headerView.image.image = [UIImage imageNamed:@"弹幕-默认@2x.png.base.universal.regular.off.horizontal.normal.active.onepartscale.onepart.49182.000.00."];
         return headerView;
     }
+    
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
@@ -142,6 +145,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+
     
     if (indexPath.section == 0) {
         UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"first" forIndexPath:indexPath];
@@ -327,11 +331,20 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    AVPlayerViewController *vc = [AVPlayerViewController new];
-    vc.player = [AVPlayer playerWithURL:[NSString stringWithFormat:kVedio,[self.homePageVM uidForRow:indexPath.row section:indexPath.section]].yx_URL];
-    [vc.player play];
+//    AVPlayerViewController *vc = [AVPlayerViewController new];
+//    vc.player = [AVPlayer playerWithURL:[NSString stringWithFormat:kVedio,[self.homePageVM uidForRow:indexPath.row section:indexPath.section]].yx_URL];
+//    [vc.player play];
+//    
+//    [self presentViewController:vc animated:YES completion:nil];
+    VedioViewController *vc = [VedioViewController new];
+    vc.url = [NSString stringWithFormat:kVedio,[self.homePageVM uidForRow:indexPath.row section:indexPath.section]].yx_URL;
+    vc.hidesBottomBarWhenPushed = YES;
     
-    [self presentViewController:vc animated:YES completion:nil];
+    vc.titleName = [self.homePageVM titleForRow:indexPath.row section:indexPath.section];
+    vc.name = [self.homePageVM nickForRow:indexPath.row section:indexPath.section];
+    vc.imgURL = [self.homePageVM iconURLForRow:indexPath.row section:indexPath.section];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
@@ -357,11 +370,21 @@ static NSString * const reuseIdentifier = @"Cell";
         [self.navigationController pushViewController:dvc animated:YES];
     }
     if (carousel.tag == 4) {
-        AVPlayerViewController *vc = [AVPlayerViewController new];
-        vc.player = [AVPlayer playerWithURL:[NSString stringWithFormat:kVedio,[self.homePageVM uidForRow:index section:0]].yx_URL];
-        [vc.player play];
+//        AVPlayerViewController *vc = [AVPlayerViewController new];
+//        vc.player = [AVPlayer playerWithURL:[NSString stringWithFormat:kVedio,[self.homePageVM uidForRow:index section:0]].yx_URL];
+//        [vc.player play];
+//        
+//        [self presentViewController:vc animated:YES completion:nil];
         
-        [self presentViewController:vc animated:YES completion:nil];
+        VedioViewController *vc = [VedioViewController new];
+        vc.url = [NSString stringWithFormat:kVedio,[self.homePageVM uidForRow:index section:0]].yx_URL;
+        vc.hidesBottomBarWhenPushed = YES;
+        
+        vc.titleName = [self.homePageVM titleForRow:index section:0];
+        vc.name = [self.homePageVM nickForRow:index section:0];
+        vc.imgURL = [self.homePageVM iconURLForRow:index section:0];
+
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
 }

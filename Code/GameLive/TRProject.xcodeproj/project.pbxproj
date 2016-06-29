@@ -23,6 +23,9 @@
 		38A641FA1C8C225D00FCBF96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A641F71C8C225D00FCBF96 /* Main.storyboard */; };
 		38ADA3B81C626AAF0093502F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA3B71C626AAF0093502F /* main.m */; };
 		38ADA3BB1C626AAF0093502F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA3BA1C626AAF0093502F /* AppDelegate.m */; };
+		52077BD91D235F16005E2C61 /* VedioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52077BD81D235F16005E2C61 /* VedioViewController.m */; };
+		52077BDD1D2376C0005E2C61 /* MeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52077BDB1D2376C0005E2C61 /* MeTableViewCell.m */; };
+		52077BDE1D2376C0005E2C61 /* MeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52077BDC1D2376C0005E2C61 /* MeTableViewCell.xib */; };
 		521A5D1F1D1C10210063C53B /* NetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 521A5D1E1D1C10210063C53B /* NetManager.m */; };
 		524A1AA71D1FC051003EAB6F /* CategoriesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 524A1AA61D1FC051003EAB6F /* CategoriesViewModel.m */; };
 		524A1AAB1D1FC0AA003EAB6F /* LanMuCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 524A1AAA1D1FC0AA003EAB6F /* LanMuCollectionViewCell.m */; };
@@ -72,6 +75,11 @@
 		38ADA3B91C626AAF0093502F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		38ADA3BA1C626AAF0093502F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3A8F54CE0222A3F4E0D59483 /* libPods-TRProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TRProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52077BD71D235F16005E2C61 /* VedioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioViewController.h; sourceTree = "<group>"; };
+		52077BD81D235F16005E2C61 /* VedioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioViewController.m; sourceTree = "<group>"; };
+		52077BDA1D2376C0005E2C61 /* MeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeTableViewCell.h; sourceTree = "<group>"; };
+		52077BDB1D2376C0005E2C61 /* MeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeTableViewCell.m; sourceTree = "<group>"; };
+		52077BDC1D2376C0005E2C61 /* MeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeTableViewCell.xib; sourceTree = "<group>"; };
 		521A5D1D1D1C10210063C53B /* NetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetManager.h; sourceTree = "<group>"; };
 		521A5D1E1D1C10210063C53B /* NetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetManager.m; sourceTree = "<group>"; };
 		524A1AA51D1FC051003EAB6F /* CategoriesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesViewModel.h; sourceTree = "<group>"; };
@@ -219,6 +227,8 @@
 				525A4D4C1D20D019000E7B16 /* HomePageCollectionViewController.m */,
 				525A4D4E1D20D40E000E7B16 /* MyTableViewController.h */,
 				525A4D4F1D20D40E000E7B16 /* MyTableViewController.m */,
+				52077BD71D235F16005E2C61 /* VedioViewController.h */,
+				52077BD81D235F16005E2C61 /* VedioViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -297,6 +307,9 @@
 				525A4D541D2111FA000E7B16 /* FirstCollectionReusableView.h */,
 				525A4D551D2111FA000E7B16 /* FirstCollectionReusableView.m */,
 				525A4D561D2111FA000E7B16 /* FirstCollectionReusableView.xib */,
+				52077BDA1D2376C0005E2C61 /* MeTableViewCell.h */,
+				52077BDB1D2376C0005E2C61 /* MeTableViewCell.m */,
+				52077BDC1D2376C0005E2C61 /* MeTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -378,6 +391,7 @@
 				38A641F81C8C225D00FCBF96 /* Assets.xcassets in Resources */,
 				525A4D581D2111FA000E7B16 /* FirstCollectionReusableView.xib in Resources */,
 				38A641FA1C8C225D00FCBF96 /* Main.storyboard in Resources */,
+				52077BDE1D2376C0005E2C61 /* MeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +456,7 @@
 				524A1AA71D1FC051003EAB6F /* CategoriesViewModel.m in Sources */,
 				521A5D1F1D1C10210063C53B /* NetManager.m in Sources */,
 				38A1A3461C745317007EEEB7 /* NSObject+AFNetworking.m in Sources */,
+				52077BD91D235F16005E2C61 /* VedioViewController.m in Sources */,
 				38ADA3BB1C626AAF0093502F /* AppDelegate.m in Sources */,
 				386BF94E1CBB3CE200BC74F1 /* NSString+YX.m in Sources */,
 				524A1AAB1D1FC0AA003EAB6F /* LanMuCollectionViewCell.m in Sources */,
@@ -461,6 +476,7 @@
 				382C11831C7E8CDD00F34BB0 /* AppDelegate+System.m in Sources */,
 				524A1AAE1D1FC245003EAB6F /* LanMuCollectionViewController.m in Sources */,
 				38ADA3B81C626AAF0093502F /* main.m in Sources */,
+				52077BDD1D2376C0005E2C61 /* MeTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
