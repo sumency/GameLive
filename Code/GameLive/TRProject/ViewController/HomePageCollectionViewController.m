@@ -193,21 +193,18 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 
-
-
+//此方法无法判断carousel的tag值
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel{
-    if (carousel.tag == 100) {
+    if (carousel.tag == 7) {
         return 7;
     }
-    else if (carousel.tag == 200) {
-        return 4;
-    }else{
+    else{
         return 4;
     }
 }
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view{
     NSLog(@"cell:%ld",(long)carousel.tag);
-    if (carousel.tag == 100) {
+    if (carousel.tag == 7) {
         if (!view) {
             view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, 60)];
             UIImageView *iv = [UIImageView new];
@@ -238,7 +235,7 @@ static NSString * const reuseIdentifier = @"Cell";
         iv.clipsToBounds = YES;
         return view;
     }
-    if (carousel.tag == 200) {
+    if (carousel.tag == 4) {
         if (!view) {
             view = [[UIView alloc] initWithFrame:carousel.bounds];
             view.backgroundColor = [UIColor cyanColor];
@@ -277,7 +274,7 @@ static NSString * const reuseIdentifier = @"Cell";
     return value;
 }
 - (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel{
-    if (carousel.tag == 200) {
+    if (carousel.tag == 4) {
         _pc.currentPage = carousel.currentItemIndex;
         
     }
@@ -289,7 +286,7 @@ static NSString * const reuseIdentifier = @"Cell";
         _ic.dataSource = self;
         _ic.autoscroll = 0;
         _ic.scrollSpeed = .1;
-        _ic.tag = 100;
+        _ic.tag = 7;
     }
     return _ic;
 }
@@ -301,7 +298,7 @@ static NSString * const reuseIdentifier = @"Cell";
         _icTop.dataSource = self;
         _icTop.autoscroll = 0;
         _icTop.scrollSpeed = .1;
-        _icTop.tag = 200;
+        _icTop.tag = 4;
         _pc = [UIPageControl new];
         [_icTop addSubview:_pc];
         [_pc mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -332,7 +329,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 -(void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
-    if (carousel.tag == 100) {
+    if (carousel.tag == 7) {
         
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
         layout.minimumLineSpacing = 10;
@@ -352,7 +349,7 @@ static NSString * const reuseIdentifier = @"Cell";
         
         [self.navigationController pushViewController:dvc animated:YES];
     }
-    if (carousel.tag == 200) {
+    if (carousel.tag == 4) {
         AVPlayerViewController *vc = [AVPlayerViewController new];
         vc.player = [AVPlayer playerWithURL:[NSString stringWithFormat:kVedio,[self.homePageVM uidForRow:index section:0]].yx_URL];
         [vc.player play];
